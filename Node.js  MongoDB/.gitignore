@@ -3,4 +3,4 @@ node_modules
 .env.*
 envCopy
 *.key
-*.json
+package-lock.json
