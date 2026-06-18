@@ -1,0 +1,3 @@
+MONGO_URL=mongodb://drashti_db_user:bF7NIX93gJs5Q7dO@ac-esxighz-shard-00-00.vpzhayf.mongodb.net:27017,ac-esxighz-shard-00-01.vpzhayf.mongodb.net:27017,ac-esxighz-shard-00-02.vpzhayf.mongodb.net:27017/chatDB?ssl=true&replicaSet=atlas-v3js9p-shard-0&authSource=admin&retryWrites=true&w=majority
+
+JWT_SECRET=WGRyhjNOl5RHDyayQvV6bLVSup1s6yYJ
