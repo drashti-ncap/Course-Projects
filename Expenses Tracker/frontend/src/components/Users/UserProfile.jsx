@@ -29,84 +29,170 @@ const UserProfile = () => {
   });
   return (
     <>
-      <div className="max-w-4xl mx-auto my-10 p-8 bg-white rounded-lg shadow-md">
-        <h1 className="mb-2 text-2xl text-center font-extrabold">
-          Welcome
-          {/* <span className="text-gray-500 text-sm ml-2">info@gmail.com</span> */}
-        </h1>
-        <h3 className="text-xl font-semibold text-gray-800 mb-4">
-          Update Profile
-        </h3>
-        {/* Display message */}
-        {isPending && <AlertMessage type="loading" message="Updating...." />}
-        {isError && (
-          <AlertMessage type="error" message={error.response.data.message} />
-        )}
-        {isSuccess && (
-          <AlertMessage type="success" message="Updated successfully" />
-        )}
-        <form onSubmit={formik.handleSubmit} className="space-y-6">
-          {/* User Name Field */}
-          <div className="flex items-center space-x-4">
-            <FaUserCircle className="text-3xl text-gray-400" />
-            <div className="flex-1">
-              <label
-                htmlFor="username"
-                className="text-sm font-medium text-gray-700"
-              >
-                Username
-              </label>
-              <input
-                {...formik.getFieldProps("username")}
-                type="text"
-                id="username"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Your username"
-              />
-            </div>
-            {formik.touched.username && formik.errors.username && (
-              <span className="text-xs text-red-500">
-                {formik.errors.username}
-              </span>
-            )}
+      <div className=" bg-gray-50 py-10 px-4">
+
+        <div className="max-w-2xl mx-auto bg-white rounded-3xl overflow-hidden shadow-xl">
+
+          {/* Header */}
+
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-10 text-center">
+
+            <FaUserCircle className="mx-auto text-white text-7xl mb-4" />
+
+            <h1 className="text-3xl font-bold text-white">
+              Welcome Back
+            </h1>
+
+            <p className="text-indigo-100 mt-2">
+              Update your profile information
+            </p>
+
           </div>
 
-          {/* Email Field */}
-          <div className="flex items-center space-x-4">
-            <FaEnvelope className="text-3xl text-gray-400" />
-            <div className="flex-1">
-              <label
-                htmlFor="email"
-                className="text-sm font-medium text-gray-700"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                {...formik.getFieldProps("email")}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-4 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Your email"
-              />
-            </div>
-            {formik.touched.email && formik.errors.email && (
-              <span className="text-xs text-red-500">
-                {formik.errors.email}
-              </span>
-            )}
-          </div>
+          {/* Form */}
 
-          {/* Save Changes Button */}
-          <div className="flex justify-end mt-6">
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          <div className="p-8">
+
+            {/* Alerts */}
+
+            <div className="mb-6">
+
+              {isPending && (
+                <AlertMessage
+                  type="loading"
+                  message="Updating profile..."
+                />
+              )}
+
+              {isError && (
+                <AlertMessage
+                  type="error"
+                  message={
+                    error?.response?.data
+                      ?.message
+                  }
+                />
+              )}
+
+              {isSuccess && (
+                <AlertMessage
+                  type="success"
+                  message="Profile updated successfully"
+                />
+              )}
+
+            </div>
+
+            <form
+              onSubmit={formik.handleSubmit}
+              className="space-y-6"
             >
-              Save Changes
-            </button>
+
+              {/* Username */}
+
+              <div>
+
+                <label className="block mb-2 text-sm font-semibold text-gray-700">
+
+                  Username
+
+                </label>
+
+                <div className="relative">
+
+                  <FaUserCircle
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                  />
+
+                  <input
+                    {...formik.getFieldProps(
+                      "username"
+                    )}
+                    type="text"
+                    placeholder="Enter username"
+                    className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
+                  />
+
+                </div>
+
+                {formik.touched
+                  .username &&
+                  formik.errors
+                    .username && (
+                    <p className="mt-2 text-sm text-red-500">
+                      {
+                        formik.errors
+                          .username
+                      }
+                    </p>
+                  )}
+
+              </div>
+
+              {/* Email */}
+
+              <div>
+
+                <label className="block mb-2 text-sm font-semibold text-gray-700">
+
+                  Email
+
+                </label>
+
+                <div className="relative">
+
+                  <FaEnvelope
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                  />
+
+                  <input
+                    type="email"
+                    {...formik.getFieldProps(
+                      "email"
+                    )}
+                    placeholder="Enter email"
+                    className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition"
+                  />
+
+                </div>
+
+                {formik.touched
+                  .email &&
+                  formik.errors
+                    .email && (
+                    <p className="mt-2 text-sm text-red-500">
+                      {
+                        formik.errors
+                          .email
+                      }
+                    </p>
+                  )}
+
+              </div>
+
+              {/* Button */}
+
+              <button
+                type="submit"
+                disabled={isPending}
+                className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:opacity-90 text-white font-semibold py-4 rounded-xl transition duration-300 shadow-lg"
+              >
+
+                {isPending
+                  ? "Saving..."
+                  : "Save Changes"}
+
+              </button>
+
+            </form>
+
           </div>
-        </form>
+
+        </div>
+
       </div>
+
+
       <UpdatePassword />
     </>
   );

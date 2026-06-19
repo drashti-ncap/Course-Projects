@@ -115,7 +115,7 @@ const TransactionForm = () => {
             setTimeout(
               () =>
                 navigate(
-                  "/transactions"
+                  "/dashboard"
                 ),
               1000
             );
@@ -380,7 +380,7 @@ const TransactionForm = () => {
 
               <FaRegCommentDots className="text-purple-600" />
 
-              Notes
+            Description
 
             </label>
 
