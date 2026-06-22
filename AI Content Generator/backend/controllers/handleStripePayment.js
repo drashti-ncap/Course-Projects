@@ -20,6 +20,7 @@ const handlestripePayment = asyncHandler(async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Number(amount) * 100,
       currency: "usd",
+      payment_method_types: ["card"],
       //add some data the meta object
       metadata: {
         userId: user?._id?.toString(),
@@ -46,7 +47,7 @@ const verifyPayment = asyncHandler(async (req, res) => {
   try {
     const paymentIntent = await stripe.paymentIntents.retrieve(paymentId);
     console.log(paymentIntent);
-    if (paymentIntent.status !== "succeeded") {
+    if (paymentIntent.status === "succeeded") {
       //get the info metada
       const metadata = paymentIntent?.metadata;
       const subscriptionPlan = metadata?.subscriptionPlan;
@@ -65,6 +66,19 @@ const verifyPayment = asyncHandler(async (req, res) => {
       const amount = paymentIntent?.amount / 100;
       const currency = paymentIntent?.currency;
       const paymentId = paymentIntent?.id;
+
+      const existingPayment = await Payment.findOne({ reference: paymentId });
+      if (existingPayment) {
+        await User.findByIdAndUpdate(userId, {
+          $addToSet: { payments: existingPayment?._id },
+        });
+
+        return res.json({
+          status: true,
+          message: "Payment already verified",
+          payment: existingPayment,
+        });
+      }
 
       //create the payment history
       const newPayment = await Payment.create({
