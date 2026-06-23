@@ -1,0 +1,200 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family:
+    Inter,
+    "Segoe UI",
+    sans-serif;
+
+  line-height: 1.5;
+
+  color: #1f2937;
+
+  background: #f5f7fb;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 320px;
+
+  min-height: 100vh;
+
+  background: #f5f7fb;
+}
+
+/* Main App */
+.App {
+  width: 100%;
+
+  max-width: 760px;
+  font-size: 25px;
+
+  margin: 48px auto;
+
+  padding: 32px;
+}
+
+/* Header */
+.App-header {
+  background: white;
+
+  padding: 40px;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 30px
+      rgba(0, 0, 0, 0.06);
+
+  margin-bottom: 24px;
+}
+
+.App-header h1 {
+  font-size: 50px;
+
+  color: #2563eb;
+
+  margin-bottom: 10px;
+}
+
+.App-header p {
+  color: #64748b;
+
+  font-size: 1rem;
+}
+
+/* Form */
+.App-form {
+  margin-top: 40px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+/* Label */
+.App-label {
+  text-align: left;
+
+  color: #374151;
+
+  font-weight: 600;
+}
+
+/* Input */
+.App-input {
+  width: 100%;
+
+  min-height: 140px;
+
+  padding: 16px;
+
+  resize: vertical;
+
+  font-size: 16px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 12px;
+
+  outline: none;
+
+  transition: all 0.2s;
+}
+
+.App-input:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 4px
+      rgba(
+        37,
+        99,
+        235,
+        0.12
+      );
+}
+
+.App-input::placeholder {
+  color: #94a3b8;
+}
+
+/* Button */
+.App-button {
+  width: 100%;
+
+  background: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 12px;
+
+  padding: 14px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.App-button:hover {
+  background: #1d4ed8;
+}
+
+.App-button:active {
+  transform: scale(0.99);
+}
+
+/* Response */
+.App-response {
+  margin-top: 24px;
+
+  text-align: left;
+
+  padding: 18px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  color: #334155;
+
+  white-space: pre-wrap;
+
+  line-height: 1.7;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .App {
+    padding: 18px;
+  }
+
+  .App-header {
+    padding: 28px;
+  }
+
+  .App-header h1 {
+    font-size: 1.8rem;
+  }
+}
+
